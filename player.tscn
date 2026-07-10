@@ -475,7 +475,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_dw050"]
 resource_name = "wall_sliding"
-length = 0.39999999999999997
+length = 0.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -562,6 +562,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=487338573]
+collision_layer = 2
 script = ExtResource("1_onrkg")
 
 [node name="Graphics" type="Node2D" parent="." unique_id=1133648221]

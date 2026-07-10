@@ -364,7 +364,7 @@ target_position = Vector2(0, 3)
 [node name="PlayerChekcker" type="RayCast2D" parent="Graphics" parent_id_path=PackedInt32Array(53635337) index="3" unique_id=1216431247]
 position = Vector2(0, -12)
 target_position = Vector2(-107, 0)
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1494700455]
 position = Vector2(0, -12)

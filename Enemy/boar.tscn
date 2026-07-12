@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://ceuwlc25x2eph" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Run/Run-Sheet.png" id="4_nu06q"]
 [ext_resource type="Texture2D" uid="uid://rym67wdopsmw" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png" id="4_oheof"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1fef"]
+radius = 13.038404
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1fef"]
+size = Vector2(36, 6)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ahyj"]
 radius = 12.0
 
@@ -140,7 +146,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_45p8d"]
 resource_name = "idle"
-length = 0.39999999999999997
+length = 0.4
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -366,6 +372,26 @@ position = Vector2(0, -12)
 target_position = Vector2(-107, 0)
 collision_mask = 3
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/HitBox" parent_id_path=PackedInt32Array(1421489732) index="0" unique_id=2034806866]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_s1fef")
+debug_color = Color(0.92880255, 3.3402743e-05, 0.6652137, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Graphics/HitBox" parent_id_path=PackedInt32Array(1421489732) index="1" unique_id=407603430]
+position = Vector2(-2, -9)
+shape = SubResource("RectangleShape2D_s1fef")
+debug_color = Color(0.93637335, 1.8097162e-05, 0.6345812, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/HurtBox" parent_id_path=PackedInt32Array(1034171924) index="0" unique_id=1032778465]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_s1fef")
+debug_color = Color(0.92880255, 3.3402743e-05, 0.6652137, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Graphics/HurtBox" parent_id_path=PackedInt32Array(1034171924) index="1" unique_id=1394931015]
+position = Vector2(-2, -9)
+shape = SubResource("RectangleShape2D_s1fef")
+debug_color = Color(0.93637335, 1.8097162e-05, 0.6345812, 0.41960785)
+
 [node name="CollisionShape2D" parent="." index="1" unique_id=1494700455]
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_6ahyj")
@@ -376,3 +402,5 @@ libraries/ = SubResource("AnimationLibrary_oheof")
 [node name="CalmDownTimer" type="Timer" parent="." index="4" unique_id=1986090571]
 wait_time = 2.5
 one_shot = true
+
+[connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]

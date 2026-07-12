@@ -14,7 +14,7 @@ enum State
 
 func can_see_player()->bool:
 	
-	if player_chekcker.is_colliding():
+	if not player_chekcker.is_colliding():
 		return false
 		
 	return player_chekcker.get_collider() is Player
@@ -74,8 +74,5 @@ func transition_state(from: State,to: State) -> void:
 		State.RUN:
 			animation_player.play("run")
 			
-			
-			
-			
-			
-			
+func _on_hurt_box_hurt(hitBox: HitBox) -> void:
+	print("Ouch")

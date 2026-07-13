@@ -2,12 +2,17 @@ extends HBoxContainer
 
 @export var stats: Stats
 
-@onready var health_bar: TextureProgressBar = $HealthBar
-@onready var eased_health_bar: TextureProgressBar = $HealthBar/EasedHealthBar
+@onready var health_bar: TextureProgressBar = $VBoxContainer/HealthBar
+@onready var eased_health_bar: TextureProgressBar = $VBoxContainer/HealthBar/EasedHealthBar
+@onready var energy_bar: TextureProgressBar = $VBoxContainer/EnergyBar
+
 
 func _ready() -> void:
 	stats.health_changed.connect(update_health)
 	update_health()
+	
+	stats.energy_changed.connect(update_energy)
+	update_energy()
 
 func update_health() -> void:
 	var percentage := stats.health / float(stats.max_health) # 整数除整数还是整数
@@ -15,3 +20,7 @@ func update_health() -> void:
 	
 	# 补间动画
 	create_tween().tween_property(eased_health_bar,"value", percentage, 0.8)
+	
+func update_energy() -> void:
+	var percentage := stats.energy / stats.max_energy # 整数除整数还是整数
+	energy_bar.value = percentage

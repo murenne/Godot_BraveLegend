@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://crwrn4cr7etgv" path="res://Classes/HurtBox.gd" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://bp2pnvxl3pel7" path="res://Classes/HitBox.gd" id="4_2hs0m"]
 [ext_resource type="Script" uid="uid://d1f7vm1yix5p5" path="res://Classes/Stats.gd" id="7_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://d1b1fwc4o7acm" path="res://UI/status_panel.tscn" id="8_dw050"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khhxn"]
 size = Vector2(16, 31)
@@ -802,7 +803,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_urp6f"]
 resource_name = "hurt"
-length = 0.39999999999999997
+length = 0.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1742,5 +1743,14 @@ metadata/_custom_type_script = "uid://cswnuta7yfo5c"
 [node name="Stats" type="Node" parent="." unique_id=778459050]
 script = ExtResource("7_1jxqw")
 metadata/_custom_type_script = "uid://d1f7vm1yix5p5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=260115112]
+
+[node name="StatusPanel" parent="CanvasLayer" unique_id=209621690 node_paths=PackedStringArray("stats") instance=ExtResource("8_dw050")]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 91.0
+offset_bottom = 29.0
+stats = NodePath("../../Stats")
 
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]

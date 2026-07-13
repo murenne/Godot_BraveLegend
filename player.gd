@@ -11,7 +11,9 @@ enum State{
 	WALL_JUMPING,
 	ATTACK_1,
 	ATTACK_2,
-	ATTACK_3
+	ATTACK_3,
+	HURT,
+	DYING,
 }
 
 const GROUND_STATES := [
@@ -28,20 +30,24 @@ const FLOOR_ACCELERATION := RUN_SPEED / 0.2
 const AIR_ACCELERATION := RUN_SPEED / 0.1
 const JUMP_VELOCITY := -350.0
 const WALL_JUMP_VELOCITY := Vector2(380, -280)
+const KNOCKBACK_AMOUNT := 500
 
 @export var can_combo:= false
 
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
 var is_first_tick := false
 var is_combo_requested := false
+var pending_damage: Damage
 
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_request_timer: Timer = $JumpRequestTimer
+@onready var invincible_timer: Timer = $InvincibleTimer
 @onready var hand_checker: RayCast2D = $Graphics/HandChecker
 @onready var feet_checker: RayCast2D = $Graphics/FeetChecker
 @onready var state_machine: StateMachine = $StateMachine
+@onready var stats: Stats = $Stats
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -54,7 +60,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_combo_requested = true
 
 func tick_physics(state: State, delta: float) -> void:
-	
+	if invincible_timer.time_left > 0:
+		graphics.modulate.a = sin(Time.get_ticks_msec() / 50 ) * 0.5+0.5
+	else:
+		graphics.modulate.a = 1
+		
 	match  state:
 		State.IDLE:
 			move(default_gravity, delta)
@@ -85,6 +95,9 @@ func tick_physics(state: State, delta: float) -> void:
 		State.ATTACK_1, State.ATTACK_2, State.ATTACK_3:
 			stand(default_gravity,delta)
 			
+		State.HURT, State.DYING:
+			stand(default_gravity,delta)
+			
 	
 	is_first_tick = false
 
@@ -108,12 +121,21 @@ func stand(gravity: float, delta: float)-> void:
 	
 	move_and_slide()
 
+func die() -> void:
+	get_tree().reload_current_scene()
+
+
 func can_wall_slide() -> bool:
 	return is_on_wall() and hand_checker.is_colliding() and feet_checker.is_colliding()
 	
 
 func get_next_state(state : State) -> int :
-	
+	if stats.health == 0:
+		return state_machine.KEEP_CURRENT if state == State.DYING else State.DYING
+		
+	if pending_damage :
+		return State.HURT
+		
 	var can_jump := is_on_floor() or coyote_timer.time_left > 0
 	var should_jump := is_on_floor() and jump_request_timer.time_left > 0
 	if should_jump :
@@ -179,6 +201,10 @@ func get_next_state(state : State) -> int :
 		State.ATTACK_3:
 			if not animation_player.is_playing():
 				return State.IDLE
+				
+		State.HURT:
+			if not animation_player.is_playing():
+				return State.IDLE
 		
 
 	return state_machine.KEEP_CURRENT
@@ -236,6 +262,20 @@ func transition_state(from: State,to: State) -> void:
 		State.ATTACK_3:
 			animation_player.play("attack_3")
 			is_combo_requested = false
+			
+		State.HURT:
+			animation_player.play("hurt")
+			stats.health -= pending_damage.amount
+			var dir := pending_damage.source.global_position.direction_to(global_position)
+			velocity = dir * KNOCKBACK_AMOUNT
+				
+			pending_damage = null
+			invincible_timer.start()
+			
+		State.DYING:
+			animation_player.play("die")
+			invincible_timer.stop()
+			
 		
 	#if to == State.WALL_JUMPING:
 		#Engine.time_scale = 0.3
@@ -244,3 +284,12 @@ func transition_state(from: State,to: State) -> void:
 	
 	is_first_tick = true
 	
+
+
+func _on_hurt_box_hurt(hitBox: HitBox) -> void:
+	if invincible_timer.time_left > 0:
+		return
+	
+	pending_damage = Damage.new()
+	pending_damage.amount = 1
+	pending_damage.source = hitBox.owner

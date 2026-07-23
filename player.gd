@@ -46,6 +46,7 @@ var is_first_tick := false
 var is_combo_requested := false
 var pending_damage: Damage
 var fall_from_y: float
+var interacting_with: Array[Interactable]
 
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -57,6 +58,7 @@ var fall_from_y: float
 @onready var feet_checker: RayCast2D = $Graphics/FeetChecker
 @onready var state_machine: StateMachine = $StateMachine
 @onready var stats: Stats = $Stats
+@onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -69,8 +71,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_combo_requested = true
 	if event.is_action_pressed("slide"):
 		slide_request_timer.start()
+	if event.is_action_pressed("interact") and interacting_with:
+		interacting_with.back().interact()
+		
 
 func tick_physics(state: State, delta: float) -> void:
+	interaction_icon.visible = not interacting_with.is_empty()
+	
 	if invincible_timer.time_left > 0:
 		graphics.modulate.a = sin(Time.get_ticks_msec() / 50 ) * 0.5+0.5
 	else:
@@ -149,6 +156,16 @@ func slide(delta: float) -> void:
 func die() -> void:
 	get_tree().reload_current_scene()
 
+func register_interactable(v: Interactable) -> void:
+	if state_machine.current_state == State.DYING:
+		return
+	if v in interacting_with:
+		return
+	
+	interacting_with.append(v)
+	
+func unregister_interactable(v: Interactable) -> void:
+	interacting_with.erase(v)
 
 func can_wall_slide() -> bool:
 	return is_on_wall() and hand_checker.is_colliding() and feet_checker.is_colliding()
@@ -323,6 +340,7 @@ func transition_state(from: State,to: State) -> void:
 		State.DYING:
 			animation_player.play("die")
 			invincible_timer.stop()
+			interacting_with.clear()
 			
 		State.SLIDING_START:
 			animation_player.play("sliding_start")

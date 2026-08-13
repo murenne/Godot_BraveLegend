@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://crwrn4cr7etgv" path="res://Classes/HurtBox.gd" id="3_eqilm"]
 [ext_resource type="Script" uid="uid://d1f7vm1yix5p5" path="res://Classes/Stats.gd" id="5_ncf7h"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=550732375]
+[node name="Enemy" type="CharacterBody2D" unique_id=550732375 groups=["enemies"]]
 collision_layer = 4
 script = ExtResource("1_px1sc")
 

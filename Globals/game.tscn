@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bhshj7dpyfvr3"]
+
+[ext_resource type="Script" uid="uid://c2kr3aftp5val" path="res://Globals/game.gd" id="1_hv63o"]
+[ext_resource type="Script" uid="uid://d1f7vm1yix5p5" path="res://Classes/Stats.gd" id="2_7rqii"]
+
+[node name="Game" type="Node" unique_id=587927121]
+script = ExtResource("1_hv63o")
+
+[node name="PlayerStats" type="Node" parent="." unique_id=1579547905]
+script = ExtResource("2_7rqii")
+metadata/_custom_type_script = "uid://d1f7vm1yix5p5"

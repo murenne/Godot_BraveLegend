@@ -70,6 +70,9 @@ var interacting_with: Array[Interactable]
 @onready var stats: Stats = Game.player_stats
 @onready var interaction_icon: AnimatedSprite2D = $InteractionIcon
 
+func _ready() -> void:
+	stand(default_gravity,0.01)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		jump_request_timer.start()

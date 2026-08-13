@@ -33,22 +33,11 @@ tile_set = ExtResource("2_tlwt5")
 
 [node name="MineGate_Bottom" parent="Node2D" unique_id=2117087354 instance=ExtResource("9_ioo17")]
 position = Vector2(811, 118)
-path = "uid://brkfvccx05tfb"
-entry_point = "EntryPoint_Top"
+path = "uid://btq34qmfyd2ru"
+entry_point = "EntryPoint_2"
 
-[node name="EntryPoint_Bottom" type="Marker2D" parent="Node2D/MineGate_Bottom" unique_id=1475661453]
+[node name="EntryPoint_1" type="Marker2D" parent="Node2D/MineGate_Bottom" unique_id=1475661453]
 position = Vector2(-59, -6)
-script = ExtResource("4_wse8f")
-direction = -1
-metadata/_custom_type_script = "uid://dmtt1evwb4rkf"
-
-[node name="MineGate_Top" parent="Node2D" unique_id=1369667367 instance=ExtResource("9_ioo17")]
-position = Vector2(836, -89)
-path = "uid://brkfvccx05tfb"
-entry_point = "EntryPoint_Bottom"
-
-[node name="EntryPoint_Top" type="Marker2D" parent="Node2D/MineGate_Top" unique_id=254768259]
-position = Vector2(-52, -15)
 script = ExtResource("4_wse8f")
 direction = -1
 metadata/_custom_type_script = "uid://dmtt1evwb4rkf"

@@ -2011,6 +2011,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=487338573]
 collision_layer = 2
 script = ExtResource("1_onrkg")
+can_combo = false
 
 [node name="Graphics" type="Node2D" parent="." unique_id=1133648221]
 

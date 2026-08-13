@@ -18,4 +18,4 @@ func interact()->void:
 	#get_tree().change_scene_to_file(path)
 	# 没法在这个修改玩家位置
 	
-	Game.change_scene(path,entry_point)
+	Game.change_scene(path,{ entry_point = entry_point })

@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://btq34qmfyd2ru"]
 
-[ext_resource type="Script" uid="uid://cud0f1k0f5nsb" path="res://world.gd" id="1_vuhtq"]
+[ext_resource type="Script" uid="uid://5y5o2qbfkkej" path="res://scene_2.gd" id="1_vuhtq"]
 [ext_resource type="TileSet" uid="uid://dlg3v26vl5y0v" path="res://GeometryBaseTileSet.tres" id="2_n4bvh"]
 [ext_resource type="PackedScene" uid="uid://jlvfv1bxw7df" path="res://Objects/mine_gate.tscn" id="3_33owt"]
 [ext_resource type="Script" uid="uid://dmtt1evwb4rkf" path="res://Classes/EntryPoint.gd" id="4_kup1q"]
 [ext_resource type="PackedScene" uid="uid://cba5nievu3d7o" path="res://player.tscn" id="5_1lry2"]
 [ext_resource type="Texture2D" uid="uid://chfhq8t2y418v" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="6_un2r7"]
+[ext_resource type="PackedScene" uid="uid://7tpbv2o50q5h" path="res://Enemy/boar.tscn" id="7_n4bvh"]
 [ext_resource type="Texture2D" uid="uid://bkrbdbe7add8y" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="7_sa2wl"]
 [ext_resource type="Texture2D" uid="uid://26mkaummpebk" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="8_xfgdl"]
 [ext_resource type="PackedScene" uid="uid://blkeemij62gik" path="res://Objects/save_stone.tscn" id="9_112sm"]
@@ -50,6 +51,9 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+
+[node name="Boar" parent="." unique_id=550732375 instance=ExtResource("7_n4bvh")]
+position = Vector2(656, 112)
 
 [node name="Parallax" type="Node2D" parent="." unique_id=2143405951]
 metadata/_edit_lock_ = true
@@ -230,3 +234,5 @@ region_rect = Rect2(210, 293, 124, 86)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1894403080]
 color = Color(0.49123132, 0.49123132, 0.49123132, 1)
+
+[connection signal="died" from="Boar" to="." method="_on_boar_died"]

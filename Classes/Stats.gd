@@ -37,5 +37,5 @@ func to_dict() -> Dictionary:
 func from_dict(dict: Dictionary) -> void:
 	max_energy = dict.max_energy
 	max_health = dict.max_health
-	health = health
+	health = dict.health
 	

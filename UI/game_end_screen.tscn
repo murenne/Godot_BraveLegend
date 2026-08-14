@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c3ia4e6628r1t"]
+
+[ext_resource type="Script" uid="uid://b13qgkiottq7t" path="res://UI/game_end_screen.gd" id="1_8wyqk"]
+
+[node name="GameEndScreen" type="Control" unique_id=1521641527]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8wyqk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=650989715]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=679646035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Congratulations"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1

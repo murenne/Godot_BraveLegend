@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cswnuta7yfo5c" path="res://Classes/StateMachine.gd" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://crwrn4cr7etgv" path="res://Classes/HurtBox.gd" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://bp2pnvxl3pel7" path="res://Classes/HitBox.gd" id="4_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://b327y1vppxcxm" path="res://UI/game_over_screen.tscn" id="8_b26j0"]
 [ext_resource type="PackedScene" uid="uid://d1b1fwc4o7acm" path="res://UI/status_panel.tscn" id="8_dw050"]
 [ext_resource type="Texture2D" uid="uid://b8ld77saiw6bc" path="res://Assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="10_n7ghd"]
 
@@ -2095,6 +2096,8 @@ offset_left = 3.0
 offset_top = 3.0
 offset_right = 91.0
 offset_bottom = 29.0
+
+[node name="GameOverScreen" parent="CanvasLayer" unique_id=1521641527 instance=ExtResource("8_b26j0")]
 
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="." unique_id=969462296]
 position = Vector2(0, -44)

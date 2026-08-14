@@ -1,3 +1,4 @@
+class_name World
 extends Node2D
 
 @onready var geometry: TileMapLayer = $Node2D/Geometry
@@ -20,6 +21,11 @@ func _ready() -> void:
 	# 防止最开始的时候相机移动会有延迟
 	camera_2d.reset_smoothing()
 
+func _unhandled_input(event: InputEvent) -> void:
+	# esc
+	if event.is_action_pressed("ui_cancel"):
+		Game.back_to_title()
+		
 func update_player(pos: Vector2, direction: Player.Direction) -> void:
 	player.global_position = pos
 	player.fall_from_y = pos.y

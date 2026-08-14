@@ -1,0 +1,282 @@
+[gd_scene format=3 uid="uid://di8u8kwdrhq6h"]
+
+[ext_resource type="Theme" uid="uid://cky0qp2px6p08" path="res://UI/main theme.tres" id="1_iaef4"]
+[ext_resource type="Script" uid="uid://da06s1grkmhru" path="res://UI/title_screen.gd" id="2_coop4"]
+[ext_resource type="Texture2D" uid="uid://chfhq8t2y418v" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="3_udsnl"]
+[ext_resource type="Texture2D" uid="uid://bkrbdbe7add8y" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="4_tuktx"]
+[ext_resource type="Texture2D" uid="uid://26mkaummpebk" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="5_nmnw7"]
+
+[sub_resource type="Animation" id="Animation_udsnl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(268, 98)]
+}
+
+[sub_resource type="Animation" id="Animation_tuktx"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.4665166, 1),
+"update": 0,
+"values": [Vector2(387, 98), Vector2(268, 98)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmnw7"]
+_data = {
+&"RESET": SubResource("Animation_udsnl"),
+&"enter": SubResource("Animation_tuktx")
+}
+
+[node name="TitleScreen" type="Control" unique_id=651543714]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iaef4")
+script = ExtResource("2_coop4")
+
+[node name="Label" type="Label" parent="." unique_id=806350161]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 21.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 30
+text = "勇者传说"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1104336924]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -10.0
+offset_right = -20.0
+offset_bottom = 91.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="NewGameBTN" type="Button" parent="VBoxContainer" unique_id=711794277]
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameBTN" type="Button" parent="VBoxContainer" unique_id=753822338]
+layout_mode = 2
+text = "Load Game"
+
+[node name="ExitGameBTN" type="Button" parent="VBoxContainer" unique_id=2071773381]
+layout_mode = 2
+text = "Exit Game"
+
+[node name="Parallax" type="Node2D" parent="." unique_id=1027124884]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="BackgroundParallax" type="Node2D" parent="Parallax" unique_id=308182835]
+
+[node name="Sky" type="Parallax2D" parent="Parallax/BackgroundParallax" unique_id=542026050]
+z_index = -1
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(384, 0)
+
+[node name="Background" type="Sprite2D" parent="Parallax/BackgroundParallax/Sky" unique_id=1785168336]
+position = Vector2(5, -353)
+scale = Vector2(2, 2)
+texture = ExtResource("3_udsnl")
+centered = false
+
+[node name="Hills" type="Parallax2D" parent="Parallax/BackgroundParallax" unique_id=1723842868]
+z_index = -1
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(384, 0)
+
+[node name="Background" type="Sprite2D" parent="Parallax/BackgroundParallax/Hills" unique_id=657691965]
+position = Vector2(0, -20)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(800, 0, 96, 256)
+
+[node name="Background2" type="Sprite2D" parent="Parallax/BackgroundParallax/Hills" unique_id=103039468]
+position = Vector2(288, -20)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(800, 0, 96, 256)
+
+[node name="Background3" type="Sprite2D" parent="Parallax/BackgroundParallax/Hills" unique_id=2130688202]
+position = Vector2(192, -20)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(800, 0, 96, 256)
+
+[node name="Background4" type="Sprite2D" parent="Parallax/BackgroundParallax/Hills" unique_id=507385037]
+position = Vector2(96, -20)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(800, 0, 96, 256)
+
+[node name="Trees" type="Parallax2D" parent="Parallax/BackgroundParallax" unique_id=863488668]
+z_index = -1
+scroll_scale = Vector2(0.7, 1)
+repeat_size = Vector2(384, 0)
+
+[node name="Background" type="Sprite2D" parent="Parallax/BackgroundParallax/Trees" unique_id=937246195]
+position = Vector2(0, 46)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(112, 0, 96, 256)
+
+[node name="Background2" type="Sprite2D" parent="Parallax/BackgroundParallax/Trees" unique_id=1955108559]
+position = Vector2(96, 46)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(112, 0, 96, 256)
+
+[node name="Background3" type="Sprite2D" parent="Parallax/BackgroundParallax/Trees" unique_id=1150175409]
+position = Vector2(192, 46)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(112, 0, 96, 256)
+
+[node name="Background4" type="Sprite2D" parent="Parallax/BackgroundParallax/Trees" unique_id=62879879]
+position = Vector2(288, 46)
+texture = ExtResource("4_tuktx")
+centered = false
+region_enabled = true
+region_rect = Rect2(112, 0, 96, 256)
+
+[node name="Bushes" type="Parallax2D" parent="Parallax/BackgroundParallax" unique_id=1041815400]
+visible = false
+z_index = -1
+scroll_scale = Vector2(0.9, 1)
+
+[node name="TreeAssets" type="Sprite2D" parent="Parallax/BackgroundParallax/Bushes" unique_id=486286808]
+position = Vector2(66, 88)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 5, 124, 86)
+
+[node name="TreeAssets2" type="Sprite2D" parent="Parallax/BackgroundParallax/Bushes" unique_id=2104516243]
+position = Vector2(566, -6)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 5, 124, 86)
+
+[node name="TreeAssets3" type="Sprite2D" parent="Parallax/BackgroundParallax/Bushes" unique_id=1104426355]
+position = Vector2(213, -159)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 5, 124, 86)
+
+[node name="TreeAssets4" type="Sprite2D" parent="Parallax/BackgroundParallax/Bushes" unique_id=557452391]
+position = Vector2(467, -183)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 5, 124, 86)
+
+[node name="TreeAssets5" type="Sprite2D" parent="Parallax/BackgroundParallax/Bushes" unique_id=509866504]
+position = Vector2(332, 15)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 101, 124, 86)
+
+[node name="TreeAssets6" type="Sprite2D" parent="Parallax/BackgroundParallax/Bushes" unique_id=9192223]
+position = Vector2(762, 41)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 101, 124, 86)
+
+[node name="ForegroundParallax" type="Node2D" parent="Parallax" unique_id=173107881]
+visible = false
+z_index = 1
+
+[node name="Bushes" type="Parallax2D" parent="Parallax/ForegroundParallax" unique_id=845339302]
+scroll_scale = Vector2(1.2, 1)
+
+[node name="TreeAssets" type="Sprite2D" parent="Parallax/ForegroundParallax/Bushes" unique_id=293650333]
+position = Vector2(170, 124)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+
+[node name="TreeAssets2" type="Sprite2D" parent="Parallax/ForegroundParallax/Bushes" unique_id=301841030]
+position = Vector2(234, 122)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+
+[node name="TreeAssets3" type="Sprite2D" parent="Parallax/ForegroundParallax/Bushes" unique_id=92713264]
+position = Vector2(292, 122)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+
+[node name="TreeAssets4" type="Sprite2D" parent="Parallax/ForegroundParallax/Bushes" unique_id=1000667152]
+position = Vector2(340, 123)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+
+[node name="TreeAssets5" type="Sprite2D" parent="Parallax/ForegroundParallax/Bushes" unique_id=93115647]
+position = Vector2(554, 112)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+
+[node name="TreeAssets6" type="Sprite2D" parent="Parallax/ForegroundParallax/Bushes" unique_id=1614844732]
+position = Vector2(502, 113)
+texture = ExtResource("5_nmnw7")
+centered = false
+region_enabled = true
+region_rect = Rect2(210, 293, 124, 86)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=530830982]
+libraries/ = SubResource("AnimationLibrary_nmnw7")
+autoplay = &"enter"
+
+[connection signal="pressed" from="VBoxContainer/NewGameBTN" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/LoadGameBTN" to="." method="_on_load_game_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitGameBTN" to="." method="_on_exit_game_btn_pressed"]

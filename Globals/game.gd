@@ -9,6 +9,7 @@ var world_states :={}
 
 @onready var player_stats: Stats = $PlayerStats
 @onready var color_rect: ColorRect = $ColorRect
+@onready var default_player_stats := player_stats.to_dict()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,27 +29,29 @@ func change_scene(path: String, params := {}) -> void:
 	tween.tween_property(color_rect, "color:a", 1, 0.2)
 	await  tween.finished
 	
-	var old_name := tree.current_scene.scene_file_path.get_file().get_basename()
-	world_states[old_name] = tree.current_scene.to_dict()
+	if tree.current_scene is World:
+		var old_name := tree.current_scene.scene_file_path.get_file().get_basename()
+		world_states[old_name] = tree.current_scene.to_dict()
 	
 	tree.change_scene_to_file(path)
 	if "init" in params:
 		params.init.call()
 	await  tree.tree_changed
 	
-	var new_name := tree.current_scene.scene_file_path.get_file().get_basename()
-	if new_name in world_states:
-		tree.current_scene.from_dict(world_states[new_name])
-	
-	if "entry_point" in params:
-		for node in tree.get_nodes_in_group("entry_points"):
-			if node.name == params.entry_point:
-				tree.current_scene.update_player(node.global_position, node.direction)
-				break
-	
-	if "position" in params and "direction" in params:
-		tree.current_scene.update_player(params.position, params.direction)
+	if tree.current_scene is World:
+		var new_name := tree.current_scene.scene_file_path.get_file().get_basename()
+		if new_name in world_states:
+			tree.current_scene.from_dict(world_states[new_name])
 		
+		if "entry_point" in params:
+			for node in tree.get_nodes_in_group("entry_points"):
+				if node.name == params.entry_point:
+					tree.current_scene.update_player(node.global_position, node.direction)
+					break
+		
+		if "position" in params and "direction" in params:
+			tree.current_scene.update_player(params.position, params.direction)
+			
 	
 	tree.paused = false
 	tween = create_tween()
@@ -100,15 +103,21 @@ func load_game() -> void:
 			player_stats.from_dict(data.stats)
 	})
 	
-func _unhandled_input(event: InputEvent) -> void:
-	# esc
-	if event.is_action_pressed("ui_cancel"):
-		load_game()
+func new_game() -> void:
+	change_scene("res://world.tscn",{
+		
+		init = func():
+			world_states = {}
+			player_stats.from_dict(default_player_stats)
+	})
 	
 	
+func back_to_tilte() -> void:
+	change_scene("res://UI/title_screen.tscn")
 	
-	
-	
+
+func has_save() -> bool:
+	return FileAccess.file_exists(SAVE_PATH)
 	
 	
 	

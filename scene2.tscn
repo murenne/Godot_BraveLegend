@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://chfhq8t2y418v" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="6_un2r7"]
 [ext_resource type="Texture2D" uid="uid://bkrbdbe7add8y" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="7_sa2wl"]
 [ext_resource type="Texture2D" uid="uid://26mkaummpebk" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="8_xfgdl"]
+[ext_resource type="PackedScene" uid="uid://blkeemij62gik" path="res://Objects/save_stone.tscn" id="9_112sm"]
 
 [node name="World" type="Node2D" unique_id=1678074354]
 script = ExtResource("1_vuhtq")
@@ -36,6 +37,9 @@ entry_point = "EntryPoint_1"
 position = Vector2(-59, -6)
 script = ExtResource("4_kup1q")
 metadata/_custom_type_script = "uid://dmtt1evwb4rkf"
+
+[node name="SaveStone" parent="Node2D" unique_id=1227928752 instance=ExtResource("9_112sm")]
+position = Vector2(480, 112)
 
 [node name="Player" parent="." unique_id=487338573 instance=ExtResource("5_1lry2")]
 position = Vector2(85, 84)
@@ -223,3 +227,6 @@ texture = ExtResource("8_xfgdl")
 centered = false
 region_enabled = true
 region_rect = Rect2(210, 293, 124, 86)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1894403080]
+color = Color(0.49123132, 0.49123132, 0.49123132, 1)

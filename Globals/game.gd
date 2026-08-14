@@ -31,10 +31,9 @@ func change_scene(path: String, params := {}) -> void:
 	var old_name := tree.current_scene.scene_file_path.get_file().get_basename()
 	world_states[old_name] = tree.current_scene.to_dict()
 	
+	tree.change_scene_to_file(path)
 	if "init" in params:
 		params.init.call()
-	
-	tree.change_scene_to_file(path)
 	await  tree.tree_changed
 	
 	var new_name := tree.current_scene.scene_file_path.get_file().get_basename()

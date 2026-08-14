@@ -8,10 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bkrbdbe7add8y" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="5_036b0"]
 [ext_resource type="Texture2D" uid="uid://26mkaummpebk" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://7tpbv2o50q5h" path="res://Enemy/boar.tscn" id="7_pkg7o"]
-[ext_resource type="Script" uid="uid://dbakc35hw5igk" path="res://Classes/Interactable.gd" id="8_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://jlvfv1bxw7df" path="res://Objects/mine_gate.tscn" id="9_ioo17"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvvpw"]
+[ext_resource type="PackedScene" uid="uid://blkeemij62gik" path="res://Objects/save_stone.tscn" id="10_wse8f"]
 
 [node name="World" type="Node2D" unique_id=1678074354]
 script = ExtResource("1_tlwt5")
@@ -41,6 +39,9 @@ position = Vector2(-59, -6)
 script = ExtResource("4_wse8f")
 direction = -1
 metadata/_custom_type_script = "uid://dmtt1evwb4rkf"
+
+[node name="SaveStone" parent="Node2D" unique_id=1227928752 instance=ExtResource("10_wse8f")]
+position = Vector2(200, 144)
 
 [node name="Player" parent="." unique_id=487338573 instance=ExtResource("2_fj7yv")]
 position = Vector2(85, 84)
@@ -231,21 +232,3 @@ region_rect = Rect2(210, 293, 124, 86)
 
 [node name="Boar" parent="." unique_id=550732375 instance=ExtResource("7_pkg7o")]
 position = Vector2(342, 77)
-
-[node name="Muashroom_test" type="Area2D" parent="." unique_id=1669021553]
-visible = false
-position = Vector2(168, 134)
-script = ExtResource("8_gbfbk")
-metadata/_custom_type_script = "uid://dbakc35hw5igk"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Muashroom_test" unique_id=814853973]
-shape = SubResource("RectangleShape2D_qvvpw")
-
-[node name="Vegatable_test" type="Area2D" parent="." unique_id=1629105319]
-visible = false
-position = Vector2(146, 134)
-script = ExtResource("8_gbfbk")
-metadata/_custom_type_script = "uid://dbakc35hw5igk"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegatable_test" unique_id=1583270354]
-shape = SubResource("RectangleShape2D_qvvpw")

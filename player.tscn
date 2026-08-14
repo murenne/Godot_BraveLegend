@@ -2011,7 +2011,6 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=487338573]
 collision_layer = 2
 script = ExtResource("1_onrkg")
-can_combo = false
 
 [node name="Graphics" type="Node2D" parent="." unique_id=1133648221]
 
@@ -2089,6 +2088,7 @@ script = ExtResource("3_i3pqv")
 metadata/_custom_type_script = "uid://cswnuta7yfo5c"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=260115112]
+layer = 20
 
 [node name="StatusPanel" parent="CanvasLayer" unique_id=209621690 instance=ExtResource("8_dw050")]
 offset_left = 3.0

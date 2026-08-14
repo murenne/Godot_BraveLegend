@@ -16,6 +16,11 @@ func _ready() -> void:
 	
 	stats.energy_changed.connect(update_energy)
 	update_energy()
+	
+	tree_exited.connect(func():
+		stats.health_changed.disconnect(update_health)
+		stats.energy_changed.disconnect(update_energy)
+	)
 
 func update_health(skip_anim := false) -> void:
 	var percentage := stats.health / float(stats.max_health) # 整数除整数还是整数

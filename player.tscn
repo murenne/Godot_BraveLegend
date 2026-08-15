@@ -2155,3 +2155,4 @@ animation = &"Keyboard"
 script = ExtResource("12_ivps1")
 
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="hit" from="Graphics/HitBox" to="." method="_on_hit_box_hit"]

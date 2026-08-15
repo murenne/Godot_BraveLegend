@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chfhq8t2y418v" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="6_un2r7"]
 [ext_resource type="PackedScene" uid="uid://7tpbv2o50q5h" path="res://Enemy/boar.tscn" id="7_n4bvh"]
 [ext_resource type="Texture2D" uid="uid://bkrbdbe7add8y" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="7_sa2wl"]
+[ext_resource type="Script" uid="uid://c86do7lx34dns" path="res://Classes/shakeCamera.gd" id="8_33owt"]
 [ext_resource type="Texture2D" uid="uid://26mkaummpebk" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Assets/Tree-Assets.png" id="8_xfgdl"]
 [ext_resource type="PackedScene" uid="uid://blkeemij62gik" path="res://Objects/save_stone.tscn" id="9_112sm"]
 
@@ -53,6 +54,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+script = ExtResource("8_33owt")
 
 [node name="Boar" parent="." unique_id=550732375 instance=ExtResource("7_n4bvh")]
 position = Vector2(656, 112)

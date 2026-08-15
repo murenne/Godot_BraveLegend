@@ -349,6 +349,9 @@ func transition_state(from: State,to: State) -> void:
 		State.HURT:
 			animation_player.play("hurt")
 			Input.start_joy_vibration(0,0,0.8,0.8)
+			
+			Game.shake_camera(4)
+			
 			stats.health -= pending_damage.amount
 			var dir := pending_damage.source.global_position.direction_to(global_position)
 			velocity = dir * KNOCKBACK_AMOUNT
@@ -389,3 +392,11 @@ func _on_hurt_box_hurt(hitBox: HitBox) -> void:
 	pending_damage = Damage.new()
 	pending_damage.amount = 1
 	pending_damage.source = hitBox.owner
+
+
+func _on_hit_box_hit(hurtBox: Variant) -> void:
+	Game.shake_camera(2)
+	
+	Engine.time_scale = 0.01
+	await  get_tree().create_timer(0.1,true,false,true).timeout
+	Engine.time_scale = 1

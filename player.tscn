@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://d1b1fwc4o7acm" path="res://UI/status_panel.tscn" id="8_dw050"]
 [ext_resource type="PackedScene" uid="uid://clh5fd4gr31yw" path="res://UI/pause_screen.tscn" id="9_n7ghd"]
 [ext_resource type="Texture2D" uid="uid://b8ld77saiw6bc" path="res://Assets/gdb-gamepad-2(all)/gdb-keyboard-2.png" id="10_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://cldp3lj4tnl2" path="res://Assets/gdb-gamepad-2(all)/gdb-xbox-2.png" id="11_nvl01"]
+[ext_resource type="Script" uid="uid://dhds06l7hiwy5" path="res://Classes/interaction_icon.gd" id="12_ivps1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khhxn"]
 size = Vector2(16, 31)
@@ -1990,6 +1992,26 @@ region = Rect2(96, 272, 16, 16)
 atlas = ExtResource("10_n7ghd")
 region = Rect2(96, 384, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
+atlas = ExtResource("11_nvl01")
+region = Rect2(256, 336, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1c27"]
+atlas = ExtResource("11_nvl01")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op7ga"]
+atlas = ExtResource("11_nvl01")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q13i1"]
+atlas = ExtResource("11_nvl01")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pylmc"]
+atlas = ExtResource("11_nvl01")
+region = Rect2(96, 80, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_no5fs"]
 animations = [{
 "frames": [{
@@ -2006,7 +2028,27 @@ animations = [{
 "texture": SubResource("AtlasTexture_bwjto")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"Keyboard",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_606se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1c27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op7ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q13i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pylmc")
+}],
+"loop": 1,
+"name": &"Xbox",
 "speed": 5.0
 }]
 
@@ -2105,8 +2147,7 @@ offset_bottom = 29.0
 [node name="InteractionIcon" type="AnimatedSprite2D" parent="." unique_id=969462296]
 position = Vector2(0, -44)
 sprite_frames = SubResource("SpriteFrames_no5fs")
-autoplay = "default"
-frame = 1
-frame_progress = 0.9575065
+animation = &"Keyboard"
+script = ExtResource("12_ivps1")
 
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]

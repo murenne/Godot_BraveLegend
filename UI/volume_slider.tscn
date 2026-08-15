@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://co6pdc28d53qs"]
+
+[ext_resource type="Theme" uid="uid://cky0qp2px6p08" path="res://UI/main theme.tres" id="1_glawk"]
+[ext_resource type="Script" uid="uid://dpjgus1gpvudv" path="res://UI/volume_slider.gd" id="2_6q1oc"]
+
+[node name="VolumeSlider" type="HSlider" unique_id=538196478]
+offset_right = 256.0
+offset_bottom = 16.0
+theme = ExtResource("1_glawk")
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource("2_6q1oc")

@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://clh5fd4gr31yw"]
+
+[ext_resource type="PackedScene" uid="uid://co6pdc28d53qs" path="res://UI/volume_slider.tscn" id="1_k1q3y"]
+[ext_resource type="Theme" uid="uid://cky0qp2px6p08" path="res://UI/main theme.tres" id="1_pqas3"]
+[ext_resource type="Script" uid="uid://c3qo2yh54xu0p" path="res://UI/pause_screen.gd" id="2_4pmby"]
+
+[node name="PauseScreen" type="Control" unique_id=1504548672]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pqas3")
+script = ExtResource("2_4pmby")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=566657620]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3647059)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1083210619]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -42.5
+offset_right = 160.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=589893946]
+layout_mode = 2
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioSetting" type="PanelContainer" parent="VBoxContainer" unique_id=1349377223]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/AudioSetting" unique_id=446236018]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/AudioSetting/GridContainer" unique_id=1377433993]
+layout_mode = 2
+text = "Main Volume"
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="VBoxContainer/AudioSetting/GridContainer" unique_id=538196478 instance=ExtResource("1_k1q3y")]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label2" type="Label" parent="VBoxContainer/AudioSetting/GridContainer" unique_id=768103011]
+layout_mode = 2
+text = "SFX Volume"
+vertical_alignment = 1
+
+[node name="VolumeSlider2" parent="VBoxContainer/AudioSetting/GridContainer" unique_id=2100998906 instance=ExtResource("1_k1q3y")]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bus = &"SFX"
+
+[node name="Label3" type="Label" parent="VBoxContainer/AudioSetting/GridContainer" unique_id=324770843]
+layout_mode = 2
+text = "BGM Volume"
+vertical_alignment = 1
+
+[node name="VolumeSlider3" parent="VBoxContainer/AudioSetting/GridContainer" unique_id=1829402766 instance=ExtResource("1_k1q3y")]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+bus = &"BGM"
+
+[node name="Actions" type="PanelContainer" parent="VBoxContainer" unique_id=2094381152]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Actions" unique_id=1130040416]
+layout_mode = 2
+alignment = 1
+
+[node name="ResumeBTN" type="Button" parent="VBoxContainer/Actions/HBoxContainer" unique_id=5162742]
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitBTN" type="Button" parent="VBoxContainer/Actions/HBoxContainer" unique_id=1314160725]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Actions/HBoxContainer/ResumeBTN" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Actions/HBoxContainer/QuitBTN" to="." method="_on_quit_btn_pressed"]

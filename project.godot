@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Game="*uid://bhshj7dpyfvr3"
 Vignette="uid://cbjaibrsglx33"
+SoundManager="*uid://b7lf4pyxxicnf"
 
 [display]
 

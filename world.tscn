@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cud0f1k0f5nsb" path="res://world.gd" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cba5nievu3d7o" path="res://player.tscn" id="2_fj7yv"]
+[ext_resource type="AudioStream" uid="uid://c7b78ua83uf03" path="res://BGM/21 11 forest LOOP.mp3" id="2_ic0uy"]
 [ext_resource type="TileSet" uid="uid://dlg3v26vl5y0v" path="res://GeometryBaseTileSet.tres" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://chfhq8t2y418v" path="res://Assets/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="4_aqk2v"]
 [ext_resource type="Script" uid="uid://dmtt1evwb4rkf" path="res://Classes/EntryPoint.gd" id="4_wse8f"]
@@ -13,6 +14,7 @@
 
 [node name="World" type="Node2D" unique_id=1678074354]
 script = ExtResource("1_tlwt5")
+bgm = ExtResource("2_ic0uy")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=688886058]
 

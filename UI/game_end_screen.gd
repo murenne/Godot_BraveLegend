@@ -11,6 +11,7 @@ var tween: Tween
 
 func _ready() -> void:
 	show_line(0)
+	SoundManager.play_bgm(preload("uid://dl7waglyg81dy"))
 
 func _input(event: InputEvent) -> void:
 	if tween.is_running():

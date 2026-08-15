@@ -15,7 +15,10 @@ func _ready() -> void:
 			if not button.disabled:
 				button.grab_focus()
 		)
-
+		
+	SoundManager.setup_ui_sound(v_box_container)
+	SoundManager.play_bgm(preload("uid://cniikp8dcxo8i"))
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

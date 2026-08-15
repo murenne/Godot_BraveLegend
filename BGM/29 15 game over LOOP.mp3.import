@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dl7waglyg81dy"
+path="res://.godot/imported/29 15 game over LOOP.mp3-0e02e6234e481ea1daeec9ed092a6033.mp3str"
+
+[deps]
+
+source_file="res://BGM/29 15 game over LOOP.mp3"
+dest_files=["res://.godot/imported/29 15 game over LOOP.mp3-0e02e6234e481ea1daeec9ed092a6033.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

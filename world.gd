@@ -1,11 +1,11 @@
 class_name World
 extends Node2D
 
+@export var bgm: AudioStream
+
 @onready var geometry: TileMapLayer = $Node2D/Geometry
 @onready var camera_2d: Camera2D = $Player/Camera2D
 @onready var player: Player = $Player
-
-
 
 func _ready() -> void:
 	
@@ -20,6 +20,9 @@ func _ready() -> void:
 	
 	# 防止最开始的时候相机移动会有延迟
 	camera_2d.reset_smoothing()
+	
+	if bgm:
+		SoundManager.play_bgm(bgm)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# esc
